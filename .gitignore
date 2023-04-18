@@ -1,0 +1,6 @@
+.vsconfig
+TestCodeProject.sln
+.vs/
+Binaries/
+Intermediate/
+Saved/
