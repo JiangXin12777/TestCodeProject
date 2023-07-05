@@ -1,3 +1,4 @@
+// Copyright (C) RenZhai.2020.All Rights Reserved.
 #include "Request/HTTPClientRequest.h"
 #include "Core/SimpleHttpMacro.h"
 #include "SimpleHTTPLog.h"

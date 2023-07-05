@@ -1,6 +1,6 @@
 // Copyright (C) RenZhai.2020.All Rights Reserved.
 #include "SimpleHTTPManage.h"
-#include "HTTP/SimpleHttpActionMultipleRequest.h"
+#include "HTTP/SimpleHttpActionMultpleRequest.h"
 #include "HTTP/SimpleHttpActionSingleRequest.h"
 #include "Core/SimpleHttpMacro.h"
 #include "Misc/FileHelper.h"
@@ -27,7 +27,7 @@ TSharedPtr<FSimpleHttpActionRequest> GetHttpActionRequest(EHTTPRequestType Reque
 		}
 		case EHTTPRequestType::MULTPLE:
 		{
-			HttpObject = MakeShareable(new FSimpleHttpActionMultipleRequest());
+			HttpObject = MakeShareable(new FSimpleHttpActionMultpleRequest());
 			UE_LOG(LogSimpleHTTP, Log, TEXT("Action to create a multple HTTP request"));
 			break;
 		}
@@ -179,14 +179,14 @@ bool FSimpleHttpManage::FHTTP::GetObjectToMemory(const FSimpleHTTPHandle &Handle
 	return false;
 }
 
-bool FSimpleHttpManage::FHTTP::GetObjectToMemory(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL)
+bool FSimpleHttpManage::FHTTP::GetObjectToMemory(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST_BP(EHTTPRequestType::SINGLE);
 
 	return GetObjectToMemory(Handle, URL);
 }
 
-bool FSimpleHttpManage::FHTTP::GetObjectToMemory(const FSimpleHttpResponseDelegate &BPResponseDelegate, const FString &URL)
+bool FSimpleHttpManage::FHTTP::GetObjectToMemory(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const FString &URL)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST(EHTTPRequestType::SINGLE);
 
@@ -206,14 +206,14 @@ void FSimpleHttpManage::FHTTP::GetObjectsToMemory(const FSimpleHTTPHandle &Handl
 	}
 }
 
-void FSimpleHttpManage::FHTTP::GetObjectsToMemory(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL)
+void FSimpleHttpManage::FHTTP::GetObjectsToMemory(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST_BP(EHTTPRequestType::MULTPLE);
 
 	GetObjectsToMemory(Handle, URL);
 }
 
-void FSimpleHttpManage::FHTTP::GetObjectsToMemory(const FSimpleHttpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL)
+void FSimpleHttpManage::FHTTP::GetObjectsToMemory(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST(EHTTPRequestType::MULTPLE);
 
@@ -235,14 +235,14 @@ bool FSimpleHttpManage::FHTTP::GetObjectToLocal(const FSimpleHTTPHandle &Handle,
 	return false;
 }
 
-bool FSimpleHttpManage::FHTTP::GetObjectToLocal(const FSimpleHttpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &SavePaths)
+bool FSimpleHttpManage::FHTTP::GetObjectToLocal(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &SavePaths)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST(EHTTPRequestType::SINGLE);
 
 	return GetObjectToLocal(Handle, URL, SavePaths);
 }
 
-bool FSimpleHttpManage::FHTTP::GetObjectToLocal(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &SavePaths)
+bool FSimpleHttpManage::FHTTP::GetObjectToLocal(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &SavePaths)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST_BP(EHTTPRequestType::SINGLE);
 
@@ -262,14 +262,14 @@ void FSimpleHttpManage::FHTTP::GetObjectsToLocal(const FSimpleHTTPHandle &Handle
 	}
 }
 
-void FSimpleHttpManage::FHTTP::GetObjectsToLocal(const FSimpleHttpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL, const FString &SavePaths)
+void FSimpleHttpManage::FHTTP::GetObjectsToLocal(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL, const FString &SavePaths)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST(EHTTPRequestType::MULTPLE);
 
 	GetObjectsToLocal(Handle, URL, SavePaths);
 }
 
-void FSimpleHttpManage::FHTTP::GetObjectsToLocal(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL, const FString &SavePaths)
+void FSimpleHttpManage::FHTTP::GetObjectsToLocal(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL, const FString &SavePaths)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST_BP(EHTTPRequestType::MULTPLE);
 
@@ -306,28 +306,28 @@ bool FSimpleHttpManage::FHTTP::PutObjectFromString(const FSimpleHTTPHandle& Hand
 	return false;
 }
 
-bool FSimpleHttpManage::FHTTP::PutObjectFromBuffer(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL, const TArray<uint8> &Buffer)
+bool FSimpleHttpManage::FHTTP::PutObjectFromBuffer(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL, const TArray<uint8> &Buffer)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST_BP(EHTTPRequestType::SINGLE);
 
 	return PutObjectFromBuffer(Handle, URL, Buffer);
 }
 
-bool FSimpleHttpManage::FHTTP::PutObjectFromString(const FSimpleHttpBpResponseDelegate& BPResponseDelegate, const FString& URL, const FString& InBuffer)
+bool FSimpleHttpManage::FHTTP::PutObjectFromString(const FSimpleHTTPBPResponseDelegate& BPResponseDelegate, const FString& URL, const FString& InBuffer)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST_BP(EHTTPRequestType::SINGLE);
 
 	return PutObjectFromString(Handle, URL, InBuffer);
 }
 
-bool FSimpleHttpManage::FHTTP::PutObjectFromBuffer(const FSimpleHttpResponseDelegate &BPResponseDelegate, const FString &URL, const TArray<uint8> &Buffer)
+bool FSimpleHttpManage::FHTTP::PutObjectFromBuffer(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const FString &URL, const TArray<uint8> &Buffer)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST(EHTTPRequestType::SINGLE);
 
 	return PutObjectFromBuffer(Handle, URL, Buffer);
 }
 
-bool FSimpleHttpManage::FHTTP::PutObjectFromString(const FSimpleHttpResponseDelegate& BPResponseDelegate, const FString& URL, const FString& InBuffer)
+bool FSimpleHttpManage::FHTTP::PutObjectFromString(const FSimpleHTTPResponseDelegate& BPResponseDelegate, const FString& URL, const FString& InBuffer)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST(EHTTPRequestType::SINGLE);
 
@@ -349,14 +349,14 @@ bool FSimpleHttpManage::FHTTP::PutObjectFromStream(const FSimpleHTTPHandle &Hand
 	return false;
 }
 
-bool FSimpleHttpManage::FHTTP::PutObjectFromStream(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL, TSharedRef<FArchive, ESPMode::ThreadSafe> Stream)
+bool FSimpleHttpManage::FHTTP::PutObjectFromStream(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL, TSharedRef<FArchive, ESPMode::ThreadSafe> Stream)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST_BP(EHTTPRequestType::SINGLE);
 
 	return PutObjectFromStream(Handle, URL, Stream);
 }
 
-bool FSimpleHttpManage::FHTTP::PutObjectFromStream(const FSimpleHttpResponseDelegate &BPResponseDelegate, const FString &URL, TSharedRef<FArchive, ESPMode::ThreadSafe> Stream)
+bool FSimpleHttpManage::FHTTP::PutObjectFromStream(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const FString &URL, TSharedRef<FArchive, ESPMode::ThreadSafe> Stream)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST(EHTTPRequestType::SINGLE);
 
@@ -378,14 +378,14 @@ bool FSimpleHttpManage::FHTTP::PutObjectFromLocal(const FSimpleHTTPHandle &Handl
 	return false;
 }
 
-bool FSimpleHttpManage::FHTTP::PutObjectFromLocal(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths)
+bool FSimpleHttpManage::FHTTP::PutObjectFromLocal(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST_BP(EHTTPRequestType::SINGLE);
 
 	return PutObjectFromLocal(Handle, URL, LocalPaths);
 }
 
-bool FSimpleHttpManage::FHTTP::PutObjectFromLocal(const FSimpleHttpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths)
+bool FSimpleHttpManage::FHTTP::PutObjectFromLocal(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST(EHTTPRequestType::SINGLE);
 
@@ -397,14 +397,14 @@ bool FSimpleHttpManage::FHTTP::PutObjectsFromLocal(const FSimpleHTTPHandle &Hand
 	return PutObjectFromLocal(Handle, URL, LocalPaths);
 }
 
-bool FSimpleHttpManage::FHTTP::PutObjectsFromLocal(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths)
+bool FSimpleHttpManage::FHTTP::PutObjectsFromLocal(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST_BP(EHTTPRequestType::MULTPLE);
 
 	return PutObjectsFromLocal(Handle, URL, LocalPaths);
 }
 
-bool FSimpleHttpManage::FHTTP::PutObjectsFromLocal(const FSimpleHttpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths)
+bool FSimpleHttpManage::FHTTP::PutObjectsFromLocal(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST(EHTTPRequestType::MULTPLE);
 
@@ -426,14 +426,14 @@ bool FSimpleHttpManage::FHTTP::DeleteObject(const FSimpleHTTPHandle &Handle, con
 	return false;
 }
 
-bool FSimpleHttpManage::FHTTP::DeleteObject(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL)
+bool FSimpleHttpManage::FHTTP::DeleteObject(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST_BP(EHTTPRequestType::SINGLE);
 
 	return DeleteObject(Handle, URL);
 }
 
-bool FSimpleHttpManage::FHTTP::DeleteObject(const FSimpleHttpResponseDelegate &BPResponseDelegate, const FString &URL)
+bool FSimpleHttpManage::FHTTP::DeleteObject(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const FString &URL)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST(EHTTPRequestType::SINGLE);
 
@@ -453,21 +453,21 @@ void FSimpleHttpManage::FHTTP::DeleteObjects(const FSimpleHTTPHandle &Handle, co
 	}
 }
 
-void FSimpleHttpManage::FHTTP::DeleteObjects(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL)
+void FSimpleHttpManage::FHTTP::DeleteObjects(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST_BP(EHTTPRequestType::MULTPLE);
 
 	DeleteObjects(Handle, URL);
 }
 
-void FSimpleHttpManage::FHTTP::DeleteObjects(const FSimpleHttpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL)
+void FSimpleHttpManage::FHTTP::DeleteObjects(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST(EHTTPRequestType::MULTPLE);
 
 	DeleteObjects(Handle, URL);
 }
 
-bool FSimpleHttpManage::FHTTP::PostRequest(const TCHAR *InURL, const TCHAR *InParam, const FSimpleHttpBpResponseDelegate &BPResponseDelegate)
+bool FSimpleHttpManage::FHTTP::PostRequest(const TCHAR *InURL, const TCHAR *InParam, const FSimpleHTTPBPResponseDelegate &BPResponseDelegate)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST_BP(EHTTPRequestType::SINGLE);
 
@@ -491,7 +491,7 @@ bool FSimpleHttpManage::FHTTP::PostRequest(const FSimpleHTTPHandle &Handle, cons
 	}
 }
 
-bool FSimpleHttpManage::FHTTP::PostRequest(const TCHAR *InURL, const TCHAR *InParam, const FSimpleHttpResponseDelegate &BPResponseDelegate)
+bool FSimpleHttpManage::FHTTP::PostRequest(const TCHAR *InURL, const TCHAR *InParam, const FSimpleHTTPResponseDelegate &BPResponseDelegate)
 {
 	SIMPLE_HTTP_REGISTERED_REQUEST(EHTTPRequestType::SINGLE);
 

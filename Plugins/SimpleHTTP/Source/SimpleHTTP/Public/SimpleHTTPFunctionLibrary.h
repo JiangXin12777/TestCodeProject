@@ -55,7 +55,7 @@ public:
 	 * @param InParam					Parameters passed.
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SimpleHTTP|SingleAction")
-	static bool PostRequest(const FString &InURL, const FString &InParam, const FSimpleHttpBpResponseDelegate &BPResponseDelegate);
+	static bool PostRequest(const FString &InURL, const FString &InParam, const FSimpleHTTPBPResponseDelegate &BPResponseDelegate);
 
 	/**
 	 *If platform is not turned PLATFORM_PROJECT macro, there is no need to manually put it in the tick of the project
@@ -72,7 +72,7 @@ public:
 	* @Return						Returns true if the request succeeds
 	*/
 	UFUNCTION(BlueprintCallable, Category = "SimpleHTTP|SingleAction")
-	static bool GetObjectToMemory(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL);
+	static bool GetObjectToMemory(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL);
 
 	/**
 	 * Download individual data locally.
@@ -83,7 +83,7 @@ public:
 	 * @Return						Returns true if the request succeeds
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SimpleHTTP|SingleAction")
-	static bool GetObjectToLocal(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &SavePaths);
+	static bool GetObjectToLocal(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &SavePaths);
 
 	/**
 	 * Upload single file from disk to server .
@@ -94,7 +94,7 @@ public:
 	 * @Return						Returns true if the request succeeds
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SimpleHTTP|SingleAction")
-	static bool PutObjectFromLocal(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths);
+	static bool PutObjectFromLocal(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths);
 	
 	/**
 	 * Can upload byte data .
@@ -105,7 +105,7 @@ public:
 	 * @Return						Returns true if the request succeeds
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SimpleHTTP|SingleAction")
-	static bool PutObjectFromBuffer(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL, const TArray<uint8> &Buffer);
+	static bool PutObjectFromBuffer(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL, const TArray<uint8> &Buffer);
 
 	/**
 	 * Can upload string data .
@@ -116,7 +116,7 @@ public:
 	 * @Return						Returns true if the request succeeds
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SimpleHTTP|SingleAction")
-	static bool PutObjectFromString(const FSimpleHttpBpResponseDelegate& BPResponseDelegate, const FString& URL, const FString& InBuffer);
+	static bool PutObjectFromString(const FSimpleHTTPBPResponseDelegate& BPResponseDelegate, const FString& URL, const FString& InBuffer);
 
 	/**
 	 * Remove a single object from the server .
@@ -126,7 +126,7 @@ public:
 	 * @Return						Returns true if the request succeeds
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SimpleHTTP|SingleAction")
-	static bool DeleteObject(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL);
+	static bool DeleteObject(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL);
 
 	/**
 	 * Upload duo files from disk to server  .
@@ -137,7 +137,7 @@ public:
 	 * @Return						Returns true if the request succeeds
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SimpleHTTP|MultpleAction")
-	static bool PutObjectsFromLocal(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths);
+	static bool PutObjectsFromLocal(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths);
 	
 	/**
 	 * Download multiple data to local .
@@ -147,7 +147,7 @@ public:
 	 * @param SavePaths				Path to local storage .
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SimpleHTTP|MultpleAction")
-	static void GetObjectsToLocal(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL, const FString &SavePaths);
+	static void GetObjectsToLocal(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL, const FString &SavePaths);
 	
 	/**
 	 * The data can be downloaded to local memory via the HTTP serverll.
@@ -157,7 +157,7 @@ public:
 	 * @param URL					Need domain name .
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SimpleHTTP|MultpleAction")
-	static void GetObjectsToMemory(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL);
+	static void GetObjectsToMemory(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL);
 	
 	/**
 	 * Multiple URLs need to be specified to remove multiple objects from the server .
@@ -166,7 +166,7 @@ public:
 	 * @param URL					Need domain name .
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SimpleHTTP|MultpleAction")
-	static void DeleteObjects(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL);
+	static void DeleteObjects(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL);
 
 public:
 };

@@ -1,0 +1,18 @@
+﻿// Copyright (C) RenZhai.2023.All Rights Reserved.
+
+#pragma once
+#include "SimpleProtocolsDefinition.h"
+
+DEFINITION_SIMPLE_PROTOCOLS(UserDataRequests, 20)
+DEFINITION_SIMPLE_PROTOCOLS(UserDataResponses, 21)
+DEFINITION_SIMPLE_PROTOCOLS(MatchRequests, 22)
+DEFINITION_SIMPLE_PROTOCOLS(CancelMatchRequests, 23)
+DEFINITION_SIMPLE_PROTOCOLS(CancelMatchResponses, 24)
+DEFINITION_SIMPLE_PROTOCOLS(MatchRequestsFail, 25)
+DEFINITION_SIMPLE_PROTOCOLS(MatchResponses, 26)
+DEFINITION_SIMPLE_PROTOCOLS(RegisteredPlayerRequests, 27)
+DEFINITION_SIMPLE_PROTOCOLS(RegisteredPlayerResponses, 28)
+DEFINITION_SIMPLE_PROTOCOLS_FORCE(PlayerQuitRequests, 29)
+DEFINITION_SIMPLE_PROTOCOLS(SelectCharacterResponses, 30)
+DEFINITION_SIMPLE_PROTOCOLS(ReadyRequests, 31)
+DEFINITION_SIMPLE_PROTOCOLS(ReadyResponses, 32)

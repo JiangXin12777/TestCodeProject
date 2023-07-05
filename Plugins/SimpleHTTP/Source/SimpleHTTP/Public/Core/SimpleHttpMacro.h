@@ -1,5 +1,8 @@
 #pragma once
 
+#include "SimpleHTTPType.h"
+#include "Interfaces/IHttpResponse.h"
+
 #define DEFINITION_HTTP_TYPE(VerbString,Content) \
 FString InNewURLEncoded = SimpleHTTP::SimpleURLEncode(*URL);\
 HttpReuest->SetURL(InNewURLEncoded);\
@@ -28,30 +31,33 @@ auto Handle = RegisteredHttpRequest(TYPE, \
 	BPResponseDelegate.AllTasksCompletedDelegate);\
 TemporaryStorageHandle = Handle
 
-void RequestPtrToSimpleRequest(FHttpRequestPtr Request, FSimpleHttpRequest &SimpleHttpRequest)
+namespace SimpleHTTP
 {
-	if (Request.IsValid())
+	FORCEINLINE void RequestPtrToSimpleRequest(FHttpRequestPtr Request, FSimpleHttpRequest &SimpleHttpRequest)
 	{
-		SimpleHttpRequest.Verb = Request->GetVerb();
-		SimpleHttpRequest.URL = Request->GetURL();
-		SimpleHttpRequest.Status = (FSimpleHttpStarte)Request->GetStatus();
-		SimpleHttpRequest.ElapsedTime = Request->GetElapsedTime();
-		SimpleHttpRequest.ContentType = Request->GetContentType();
-		SimpleHttpRequest.ContentLength = Request->GetContentLength();
-		SimpleHttpRequest.AllHeaders = Request->GetAllHeaders();
+		if (Request.IsValid())
+		{
+			SimpleHttpRequest.Verb = Request->GetVerb();
+			SimpleHttpRequest.URL = Request->GetURL();
+			SimpleHttpRequest.Status = (FSimpleHttpStarte)Request->GetStatus();
+			SimpleHttpRequest.ElapsedTime = Request->GetElapsedTime();
+			SimpleHttpRequest.ContentType = Request->GetContentType();
+			SimpleHttpRequest.ContentLength = Request->GetContentLength();
+			SimpleHttpRequest.AllHeaders = Request->GetAllHeaders();
+		}
 	}
-}
 
-void ResponsePtrToSimpleResponse(FHttpResponsePtr Response, FSimpleHttpResponse &SimpleHttpResponse)
-{
-	if (Response.IsValid())
+	FORCEINLINE void ResponsePtrToSimpleResponse(FHttpResponsePtr Response, FSimpleHttpResponse &SimpleHttpResponse)
 	{
-		SimpleHttpResponse.ResponseCode = Response->GetResponseCode();
-		SimpleHttpResponse.URL = Response->GetURL();
-		SimpleHttpResponse.ResponseMessage = Response->GetContentAsString();
-		SimpleHttpResponse.ContentType = Response->GetContentType();
-		SimpleHttpResponse.ContentLength = Response->GetContentLength();
-		SimpleHttpResponse.AllHeaders = Response->GetAllHeaders();
-		SimpleHttpResponse.Content->Content = const_cast<TArray<uint8>*>(&Response->GetContent());
+		if (Response.IsValid())
+		{
+			SimpleHttpResponse.ResponseCode = Response->GetResponseCode();
+			SimpleHttpResponse.URL = Response->GetURL();
+			SimpleHttpResponse.ResponseMessage = Response->GetContentAsString();
+			SimpleHttpResponse.ContentType = Response->GetContentType();
+			SimpleHttpResponse.ContentLength = Response->GetContentLength();
+			SimpleHttpResponse.AllHeaders = Response->GetAllHeaders();
+			SimpleHttpResponse.Content->Content = const_cast<TArray<uint8>*>(&Response->GetContent());
+		}
 	}
 }

@@ -1,3 +1,5 @@
+// Copyright (C) RenZhai.2020.All Rights Reserved.
+
 #pragma once
 
 #include "CoreMinimal.h"
@@ -7,7 +9,7 @@
 /**
  * 
  */
-class SIMPLEHTTP_API FSimpleHttpActionRequest : public TSharedFromThis<FSimpleHttpActionRequest>
+class SIMPLEHTTP_API FSimpleHttpActionRequest :public TSharedFromThis<FSimpleHttpActionRequest>
 {
 public:
 	typedef FSimpleHttpActionRequest Super;
@@ -45,9 +47,9 @@ public:
 	virtual bool DeleteObject(const FString &URL);
 	virtual bool PostObject(const FString &URL);
 
-	FORCEINLINE const FString& GetPaths() const { return TmpSavePaths; }
+	FORCEINLINE FString GetPaths() { return TmpSavePaths; }
 	FORCEINLINE void SetPaths(const FString &NewPaths) { TmpSavePaths = NewPaths; }
-	FORCEINLINE bool IsRequestComplete() const { return bRequestComplete; }
+	FORCEINLINE bool IsRequestComplete() { return bRequestComplete; }
 
 protected:
 	virtual void HttpRequestComplete(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bConnectedSuccessfully);

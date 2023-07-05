@@ -75,7 +75,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param InParam					Parameters passed.
 		 * @param BPResponseDelegate		Proxy for site return.
 		 */
-		bool PostRequest(const TCHAR *InURL, const TCHAR *InParam, const FSimpleHttpBpResponseDelegate &BPResponseDelegate);
+		bool PostRequest(const TCHAR *InURL, const TCHAR *InParam, const FSimpleHTTPBPResponseDelegate &BPResponseDelegate);
 
 		/**
 		 * The data can be downloaded to local memory via the HTTP serverll .
@@ -84,7 +84,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param URL					domain name .
 		 * @Return						Returns true if the request succeeds 
 		 */
-		bool GetObjectToMemory(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL);
+		bool GetObjectToMemory(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL);
 		
 		/**
 		 * The data can be downloaded to local memory via the HTTP serverll.
@@ -93,7 +93,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param BPResponseDelegate	Proxy set relative to the blueprint.
 		 * @param URL					Need domain name .
 		 */
-		void GetObjectsToMemory(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL);
+		void GetObjectsToMemory(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL);
 
 		/**
 		 * Download individual data locally.
@@ -103,7 +103,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param SavePaths				Path to local storage .
 		 * @Return						Returns true if the request succeeds 
 		 */
-		bool GetObjectToLocal(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &SavePaths);
+		bool GetObjectToLocal(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &SavePaths);
 		
 		/**
 		 * Download multiple data to local .
@@ -112,7 +112,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param URL					Need domain name .
 		 * @param SavePaths				Path to local storage .
 		 */
-		void GetObjectsToLocal(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL, const FString &SavePaths);
+		void GetObjectsToLocal(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL, const FString &SavePaths);
 
 		/**
 		 * Upload single file from disk to server .
@@ -122,7 +122,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param LocalPaths			Specify the Path where you want to upload the file.
 		 * @Return						Returns true if the request succeeds
 		 */
-		bool PutObjectFromLocal(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths);
+		bool PutObjectFromLocal(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths);
 		
 		/**
 		 * Upload duo files from disk to server  .
@@ -132,7 +132,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param LocalPaths			Specify the Path where you want to upload the file.
 		 * @Return						Returns true if the request succeeds
 		 */
-		bool PutObjectsFromLocal(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths);
+		bool PutObjectsFromLocal(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths);
 
 		/**
 		 * Can upload byte data .
@@ -142,7 +142,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param Buffer				Byte code data.
 		 * @Return						Returns true if the request succeeds
 		 */
-		bool PutObjectFromBuffer(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL, const TArray<uint8> &Buffer);
+		bool PutObjectFromBuffer(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL, const TArray<uint8> &Buffer);
 		
 		/**
 		 * Can upload string data .
@@ -152,7 +152,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param Buffer				string code data.
 		 * @Return						Returns true if the request succeeds
 		 */
-		bool PutObjectFromString(const FSimpleHttpBpResponseDelegate& BPResponseDelegate, const FString& URL, const FString& InBuffer);
+		bool PutObjectFromString(const FSimpleHTTPBPResponseDelegate& BPResponseDelegate, const FString& URL, const FString& InBuffer);
 
 		/**
 		 * Stream data upload supported by UE4 .
@@ -162,7 +162,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param Stream				UE4 storage structure .
 		 * @Return						Returns true if the request succeeds
 		 */
-		bool PutObjectFromStream(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL, TSharedRef<FArchive, ESPMode::ThreadSafe> Stream);
+		bool PutObjectFromStream(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL, TSharedRef<FArchive, ESPMode::ThreadSafe> Stream);
 
 		/**
 		 * Remove a single object from the server .
@@ -171,7 +171,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param URL					domain name .
 		 * @Return						Returns true if the request succeeds
 		 */
-		bool DeleteObject(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const FString &URL);
+		bool DeleteObject(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const FString &URL);
 		
 		/**
 		 * Multiple URLs need to be specified to remove multiple objects from the server .
@@ -179,7 +179,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param BPResponseDelegate	Proxy set relative to the blueprint.
 		 * @param URL					Need domain name .
 		 */
-		void DeleteObjects(const FSimpleHttpBpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL);
+		void DeleteObjects(const FSimpleHTTPBPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL);
 		
 		//////////////////////////////////////////////////////////////////////////
 
@@ -190,7 +190,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param InParam					Parameters passed.
 		 * @param BPResponseDelegate		Proxy for site return.
 		 */
-		bool PostRequest(const TCHAR *InURL, const TCHAR *InParam, const FSimpleHttpResponseDelegate &BPResponseDelegate);
+		bool PostRequest(const TCHAR *InURL, const TCHAR *InParam, const FSimpleHTTPResponseDelegate &BPResponseDelegate);
 
 		/**
 		 * The data can be downloaded to local memory via the HTTP serverll .
@@ -199,7 +199,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param URL					domain name .
 		 * @Return						Returns true if the request succeeds
 		 */
-		bool GetObjectToMemory(const FSimpleHttpResponseDelegate &BPResponseDelegate, const FString &URL);
+		bool GetObjectToMemory(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const FString &URL);
 
 		/**
 		 * The data can be downloaded to local memory via the HTTP serverll.
@@ -208,7 +208,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param BPResponseDelegate	C + + based proxy interface .
 		 * @param URL					Need domain name .
 		 */
-		void GetObjectsToMemory(const FSimpleHttpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL);
+		void GetObjectsToMemory(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL);
 
 		/**
 		 * Download individual data locally.
@@ -218,7 +218,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param SavePaths				Path to local storage .
 		 * @Return						Returns true if the request succeeds
 		 */
-		bool GetObjectToLocal(const FSimpleHttpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &SavePaths);
+		bool GetObjectToLocal(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &SavePaths);
 
 		/**
 		 * Download multiple data to local .
@@ -227,7 +227,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param URL					Need domain name .
 		 * @param SavePaths				Path to local storage .
 		 */
-		void GetObjectsToLocal(const FSimpleHttpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL, const FString &SavePaths);
+		void GetObjectsToLocal(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL, const FString &SavePaths);
 
 		/**
 		 * Upload single file from disk to server .
@@ -237,7 +237,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param LocalPaths			Specify the Path where you want to upload the file.
 		 * @Return						Returns true if the request succeeds
 		 */
-		bool PutObjectFromLocal(const FSimpleHttpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths);
+		bool PutObjectFromLocal(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths);
 
 		/**
 		 * Upload duo files from disk to server  .
@@ -247,7 +247,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param LocalPaths			Specify the Path where you want to upload the file.
 		 * @Return						Returns true if the request succeeds
 		 */
-		bool PutObjectsFromLocal(const FSimpleHttpResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths);
+		bool PutObjectsFromLocal(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const FString &URL, const FString &LocalPaths);
 
 		/**
 		 * Can upload byte data .
@@ -257,7 +257,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param Buffer				Byte code data.
 		 * @Return						Returns true if the request succeeds
 		 */
-		bool PutObjectFromBuffer(const FSimpleHttpResponseDelegate &BPResponseDelegate, const FString &URL, const TArray<uint8> &Buffer);
+		bool PutObjectFromBuffer(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const FString &URL, const TArray<uint8> &Buffer);
 		
 		/**
 		 * Can upload string data .
@@ -267,7 +267,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param Buffer				string code data.
 		 * @Return						Returns true if the request succeeds
 		 */
-		bool PutObjectFromString(const FSimpleHttpResponseDelegate& BPResponseDelegate, const FString& URL, const FString& InBuffer);
+		bool PutObjectFromString(const FSimpleHTTPResponseDelegate& BPResponseDelegate, const FString& URL, const FString& InBuffer);
 
 		/**
 		 * Stream data upload supported by UE4 .
@@ -277,7 +277,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param Stream				UE4 storage structure .
 		 * @Return						Returns true if the request succeeds
 		 */
-		bool PutObjectFromStream(const FSimpleHttpResponseDelegate &BPResponseDelegate, const FString &URL, TSharedRef<FArchive, ESPMode::ThreadSafe> Stream);
+		bool PutObjectFromStream(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const FString &URL, TSharedRef<FArchive, ESPMode::ThreadSafe> Stream);
 
 		/**
 		 * Remove a single object from the server .
@@ -286,7 +286,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param URL					domain name .
 		 * @Return						Returns true if the request succeeds
 		 */
-		bool DeleteObject(const FSimpleHttpResponseDelegate &BPResponseDelegate, const FString &URL);
+		bool DeleteObject(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const FString &URL);
 
 		/**
 		 * Multiple URLs need to be specified to remove multiple objects from the server .
@@ -294,7 +294,7 @@ class SIMPLEHTTP_API FSimpleHttpManage
 		 * @param BPResponseDelegate	C + + based proxy interface .
 		 * @param URL					Need domain name .
 		 */
-		void DeleteObjects(const FSimpleHttpResponseDelegate &BPResponseDelegate, const TArray<FString> &URL);
+		void DeleteObjects(const FSimpleHTTPResponseDelegate &BPResponseDelegate, const TArray<FString> &URL);
 
 	private:
 

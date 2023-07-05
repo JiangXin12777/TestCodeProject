@@ -108,7 +108,7 @@ void FSimpleHttpActionRequest::HttpRequestComplete(FHttpRequestPtr Request, FHtt
 void FSimpleHttpActionRequest::HttpRequestProgress(FHttpRequestPtr Request, int32 BytesSent, int32 BytesReceived)
 {
 	FSimpleHttpRequest SimpleHttpRequest;
-	RequestPtrToSimpleRequest(Request, SimpleHttpRequest);
+	SimpleHTTP::RequestPtrToSimpleRequest(Request, SimpleHttpRequest);
 
 	SimpleHttpRequestProgressDelegate.ExecuteIfBound(SimpleHttpRequest, BytesSent, BytesReceived);
 	SimpleSingleRequestProgressDelegate.ExecuteIfBound(SimpleHttpRequest, BytesSent, BytesReceived);
@@ -119,7 +119,7 @@ void FSimpleHttpActionRequest::HttpRequestProgress(FHttpRequestPtr Request, int3
 void FSimpleHttpActionRequest::HttpRequestHeaderReceived(FHttpRequestPtr Request, const FString& HeaderName, const FString& NewHeaderValue)
 {
 	FSimpleHttpRequest SimpleHttpRequest;
-	RequestPtrToSimpleRequest(Request, SimpleHttpRequest);
+	SimpleHTTP::RequestPtrToSimpleRequest(Request, SimpleHttpRequest);
 
 	SimpleHttpRequestHeaderReceivedDelegate.ExecuteIfBound(SimpleHttpRequest, HeaderName, NewHeaderValue);
 	SimpleSingleRequestHeaderReceivedDelegate.ExecuteIfBound(SimpleHttpRequest, HeaderName, NewHeaderValue);
@@ -141,8 +141,8 @@ void FSimpleHttpActionRequest::ExecutionCompleteDelegate(FHttpRequestPtr Request
 {
 	FSimpleHttpRequest SimpleHttpRequest;
 	FSimpleHttpResponse SimpleHttpResponse;
-	ResponsePtrToSimpleResponse(Response, SimpleHttpResponse);
-	RequestPtrToSimpleRequest(Request, SimpleHttpRequest);
+	SimpleHTTP::ResponsePtrToSimpleResponse(Response, SimpleHttpResponse);
+	SimpleHTTP::RequestPtrToSimpleRequest(Request, SimpleHttpRequest);
 
 	SimpleHttpRequestCompleteDelegate.ExecuteIfBound(SimpleHttpRequest, SimpleHttpResponse, bConnectedSuccessfully);
 	SimpleCompleteDelegate.ExecuteIfBound(SimpleHttpRequest, SimpleHttpResponse, bConnectedSuccessfully);

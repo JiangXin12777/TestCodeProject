@@ -25,7 +25,7 @@ enum class EHTTPRequestType
 };
 
 UENUM(BlueprintType)
-enum class ESimpleHttpStarte :uint8
+enum class FSimpleHttpStarte :uint8
 {
 	NotStarted,//ProcessRequest()
 	Processing,
@@ -64,7 +64,7 @@ struct SIMPLEHTTP_API FSimpleHttpRequest :public FSimpleHttpBase
 	FSimpleHttpRequest()
 		:Super()
 		, ElapsedTime(INDEX_NONE)
-		, Status(ESimpleHttpStarte::NotStarted)
+		, Status(FSimpleHttpStarte::NotStarted)
 	{}
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SimpleHttpBase|SimpleHttpRequest")
@@ -74,7 +74,7 @@ struct SIMPLEHTTP_API FSimpleHttpRequest :public FSimpleHttpBase
 	float ElapsedTime;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SimpleHttpBase|SimpleHttpRequest")
-	ESimpleHttpStarte Status;
+	FSimpleHttpStarte Status;
 };
 
 USTRUCT(BlueprintType)
@@ -110,7 +110,7 @@ DECLARE_DELEGATE_ThreeParams(FSimpleSingleRequestProgressDelegate, const FSimple
 DECLARE_DELEGATE_ThreeParams(FSimpleSingleRequestHeaderReceivedDelegate, const FSimpleHttpRequest &, const FString &, const FString &);
 
 USTRUCT(BlueprintType)
-struct SIMPLEHTTP_API FSimpleHttpBpResponseDelegate
+struct SIMPLEHTTP_API FSimpleHTTPBPResponseDelegate
 {
 	GENERATED_USTRUCT_BODY()
 
@@ -127,7 +127,7 @@ struct SIMPLEHTTP_API FSimpleHttpBpResponseDelegate
 	FAllRequestCompleteDelegate							AllRequestCompleteDelegate;
 };
 
-struct SIMPLEHTTP_API FSimpleHttpResponseDelegate
+struct SIMPLEHTTP_API FSimpleHTTPResponseDelegate
 {
 	FSimpleSingleCompleteDelegate						SimpleCompleteDelegate;
 	FSimpleSingleRequestProgressDelegate				SimpleSingleRequestProgressDelegate;
