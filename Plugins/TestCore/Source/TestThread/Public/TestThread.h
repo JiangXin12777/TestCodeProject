@@ -1,9 +1,11 @@
-#pragma once
+﻿#pragma once
 
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
-class FSimpleThreadModule : public IModuleInterface
+DECLARE_LOG_CATEGORY_EXTERN(TestThreadLog, Log, All);
+
+class FTestThreadModule : public IModuleInterface
 {
 public:
 

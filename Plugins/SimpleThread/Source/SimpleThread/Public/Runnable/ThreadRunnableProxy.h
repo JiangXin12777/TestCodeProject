@@ -1,4 +1,3 @@
-// Copyright (C) RenZhai.2019.All Rights Reserved.
 #pragma once
 
 #include "CoreMinimal.h"
@@ -11,31 +10,31 @@ class SIMPLETHREAD_API FThreadRunnable : public FRunnable, public IThreadProxy
 {
 public:
 	FThreadRunnable(bool InSuspendAtFirst = false);
-	virtual ~FThreadRunnable();
+	virtual ~FThreadRunnable() override;
 
 	//Create a secure thread 
-	virtual void CreateSafeThread();
+	virtual void CreateSafeThread() override;
 
 	//Wake up thread 
-	virtual void WakeupThread();
+	virtual void WakeupThread() override;
 
 	//Whether the thread is suspended 
-	virtual bool IsSuspend();
+	virtual bool IsSuspend() override;
 
 	//Let the startup thread wait until the current task is completed 
-	virtual void WaitAndCompleted();
+	virtual void WaitAndCompleted() override;
 
 	//Block start thread 
-	virtual void BlockingAndCompletion();
+	virtual void BlockingAndCompletion() override;
 
 private:
 
 	//Where threads actually execute 
-	virtual uint32 Run();
+	virtual uint32 Run() override;
 
-	virtual bool Init();
-	virtual void Stop();
-	virtual void Exit();
+	virtual bool Init() override;
+	virtual void Stop() override;
+	virtual void Exit() override;
 
 private:
 
