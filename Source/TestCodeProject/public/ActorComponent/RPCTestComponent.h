@@ -3,9 +3,7 @@
 #include "CoreMinimal.h"
 #include "RPCTestComponent.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTestProperty_2, FString, OldValue, const FString&, NewValue);
-
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTestProperty_3, const FString&, OldValue, const FString&, NewValue);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTestProperty, const FString&, OldValue, const FString&, NewValue);
 
 
 UCLASS( ClassGroup=(Test), meta=(BlueprintSpawnableComponent) )
@@ -23,6 +21,9 @@ public:
 	UFUNCTION(BlueprintCallable, NetMulticast, Reliable, Category = "Test|RPC")
 	void ChangeTestProperty_3_Multicast(const FString& InNewVal);
 
+	UFUNCTION(BlueprintCallable, Category = "Test|RPC")
+	void ChangeTestProperty_4(const FString& InNewVal);
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -30,7 +31,7 @@ protected:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Test|RPC", Replicated)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Test|RPC", ReplicatedUsing = OnRep_TestProperty_1)
 	int32 TestProperty_1;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Test|RPC", ReplicatedUsing = OnRep_TestProperty_2)
@@ -38,14 +39,30 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Test|RPC")
 	FString TestProperty_3;
+	
+	UPROPERTY(Replicated, ReplicatedUsing = OnRep_TestProperty_4)
+    FString TestProperty_4;
+    
 
 	UPROPERTY(BlueprintAssignable, Category = "Test|RPC")
-	FOnTestProperty_2 OnTestProperty_2;
+	FOnTestProperty OnTestProperty_1;
 
 	UPROPERTY(BlueprintAssignable, Category = "Test|RPC")
-	FOnTestProperty_3 OnTestProperty_3;
+	FOnTestProperty OnTestProperty_2;
+
+	UPROPERTY(BlueprintAssignable, Category = "Test|RPC")
+	FOnTestProperty OnTestProperty_3;
+
+	UPROPERTY(BlueprintAssignable, Category = "Test|RPC")
+	FOnTestProperty OnTestProperty_4;
 
 protected:
 	UFUNCTION()
+	void OnRep_TestProperty_1();
+
+	UFUNCTION()
 	void OnRep_TestProperty_2(FString OldVal);
+
+	UFUNCTION()
+	void OnRep_TestProperty_4(FString OldVal);
 };

@@ -16,7 +16,8 @@ public class TestCodeProject : ModuleRules
 			"InputCore", 
 			"HeadMountedDisplay", 
 			"EnhancedInput",
-			"UMG"
+			"UMG",
+			"NetCore"
 		});
 	}
 }
