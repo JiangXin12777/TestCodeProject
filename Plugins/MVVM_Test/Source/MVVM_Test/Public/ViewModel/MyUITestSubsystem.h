@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "MVVMGameSubsystem.h"
 #include "MVVMSubsystem.h"
 #include "MyGlobalViewModel.h"
 #include "Subsystems/GameInstanceSubsystem.h"
@@ -38,9 +39,13 @@ public:
         ViewModel2->VectorValue = FVector(2.0, 2.0, 2.0);
         ViewModel2->Vector2DValue = FVector2D(2.0, 2.0);
 
-        const auto GlobalViewModelCollection = GEngine->GetEngineSubsystem<UMVVMSubsystem>()->GetGlobalViewModelCollection();
-        GlobalViewModelCollection->AddViewModelInstance(Context1, ViewModel1);
-        GlobalViewModelCollection->AddViewModelInstance(Context2, ViewModel2);
+        // const auto GlobalViewModelCollection = GEngine->GetEngineSubsystem<UMVVMSubsystem>()->GetGlobalViewModelCollection();
+        // GlobalViewModelCollection->AddViewModelInstance(Context1, ViewModel1);
+        // GlobalViewModelCollection->AddViewModelInstance(Context2, ViewModel2);
+
+        // const auto GlobalViewModelCollection = GetGameInstance()->GetSubsystem<UMVVMGameSubsystem>()->GetViewModelCollection();
+        // GlobalViewModelCollection->AddViewModelInstance(Context1, ViewModel1);
+        // GlobalViewModelCollection->AddViewModelInstance(Context2, ViewModel2);
     }
     
     virtual void Deinitialize() override
@@ -55,9 +60,13 @@ public:
         Context2.ContextClass = UMyGlobalViewModel::StaticClass();
         Context2.ContextName = "MyGlobalViewModel2";
         
-        const auto GlobalViewModelCollection = GEngine->GetEngineSubsystem<UMVVMSubsystem>()->GetGlobalViewModelCollection();
-        GlobalViewModelCollection->RemoveViewModel(Context1);
-        GlobalViewModelCollection->RemoveViewModel(Context2);
+        // const auto GlobalViewModelCollection = GEngine->GetEngineSubsystem<UMVVMSubsystem>()->GetGlobalViewModelCollection();
+        // GlobalViewModelCollection->RemoveViewModel(Context1);
+        // GlobalViewModelCollection->RemoveViewModel(Context2);
+
+        // const auto GlobalViewModelCollection = GetGameInstance()->GetSubsystem<UMVVMGameSubsystem>()->GetViewModelCollection();
+        // GlobalViewModelCollection->RemoveViewModel(Context1);
+        // GlobalViewModelCollection->RemoveViewModel(Context2);
     }
     
 };

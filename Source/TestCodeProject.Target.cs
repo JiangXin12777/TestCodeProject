@@ -8,8 +8,9 @@ public class TestCodeProjectTarget : TargetRules
 	public TestCodeProjectTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
+		bWithPushModel = true;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
-		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_1;
+		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_3;
 		ExtraModuleNames.Add("TestCodeProject");
 	}
 }

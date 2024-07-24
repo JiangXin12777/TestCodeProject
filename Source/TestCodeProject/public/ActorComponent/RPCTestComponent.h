@@ -6,7 +6,7 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTestProperty, const FString&, OldValue, const FString&, NewValue);
 
 
-UCLASS( ClassGroup=(Test), meta=(BlueprintSpawnableComponent) )
+UCLASS(Blueprintable, BlueprintType,  ClassGroup=(Test), meta=(BlueprintSpawnableComponent) )
 class TESTCODEPROJECT_API URPCTestComponent : public UActorComponent
 {
 	GENERATED_BODY()
@@ -40,7 +40,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Test|RPC")
 	FString TestProperty_3;
 	
-	UPROPERTY(Replicated, ReplicatedUsing = OnRep_TestProperty_4)
+	UPROPERTY(Replicated, BlueprintReadWrite)
     FString TestProperty_4;
     
 
